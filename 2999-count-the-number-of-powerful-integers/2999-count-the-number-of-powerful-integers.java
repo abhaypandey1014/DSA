@@ -33,14 +33,14 @@ class Solution {
         //ab suffix ki validity check krni hai jo fixed hone hai
         else{
             int digit = s.charAt(idx-(n-m))-'0';
-            //4331
-            //4321
-
             if(tight==0){
                 ans += solve(dp,str,limit,s,idx+1,0);
             }
             else{
-                int cur = str.charAt(idx) - '0';
+                int cur = str.charAt(idx)-'0';
+                //4 3 3 1 --> Upper bound
+                //4 2 2 1 ---> Given string
+                //2 < 3 ----> means aage ja skte hai kuki chota number hai
                 if(digit<cur) ans += solve(dp,str,limit,s,idx+1,0);
                 else if(digit==cur) ans += solve(dp,str,limit,s,idx+1,1);
             }
