@@ -9,10 +9,9 @@ class Solution {
             if(start==0 && i==0) ans += solve(s,dp,idx+1,newtight,0,0);
             else{
                 if(i==3 || i==4 || i==7) continue;
+                //agr 0 1 ya 8 hua to change same rhega otherwise 1 ho jaega
                 int newChange = change;
-                if(i==2 || i==5 || i==6 || i==9){
-                    newChange = 1;
-                }
+                if(i==2 || i==5 || i==6 || i==9) newChange = 1;
                 ans += solve(s,dp,idx+1,newtight,1,newChange);
             }
         }
