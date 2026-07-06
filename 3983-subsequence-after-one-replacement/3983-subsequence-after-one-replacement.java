@@ -39,6 +39,12 @@ class Solution {
         }
 
         for(int i = 0;i<n;i++){
+            //------  a  b  c  -----
+            //    -1  0  2  2
+            //        \     ---> gap should be checked whether it can be filled by other character in the other string or not
+            //         \
+            //    -1 -1  1  2
+            //------  a  c   -----
             if(pref[i]+1<suff[i+1]) return true;
         }
         return false;
