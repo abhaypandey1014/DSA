@@ -44,6 +44,14 @@ class Solution {
         for(int i = 0;i<n*n;i++){
             par[i] = i;
         }
+        // Method 2--> Use this mapping technique instead of priorityqueue
+        // int[][] pos = new int[n*n][2];
+        // for(int i = 0;i<n;i++){
+        //     for(int j = 0;j<n;j++){
+        //         pos[grid[i][j]][0] = i;
+        //         pos[grid[i][j]][1] = j;
+        //     }
+        // }
         int dr[] = {-1,0,1,0};
         int dc[] = {0,-1,0,1};
         boolean active[][] = new boolean[n][n];
