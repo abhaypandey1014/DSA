@@ -1,8 +1,6 @@
 class Solution {
     public void help(int nums[],int idx,List<Integer> list,List<List<Integer>> ans){
-        if(list.size()>1){
-            ans.add(new ArrayList<>(list));
-        }
+        if(list.size()>1) ans.add(new ArrayList<>(list));
         HashSet<Integer> set = new HashSet<>();
         for(int i = idx;i<nums.length;i++){
             if(set.contains(nums[i])) continue;
