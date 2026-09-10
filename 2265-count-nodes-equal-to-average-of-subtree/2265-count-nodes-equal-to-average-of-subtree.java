@@ -1,24 +1,24 @@
 class Solution {
     private int count = 0;
-    private int countNode(TreeNode root) {
+    private int count(TreeNode root) {
         if(root == null) return 0;
-        return 1+countNode(root.left)+countNode(root.right);
+        return 1+count(root.left)+count(root.right);
     }
-    public int subtreeSum(TreeNode root){
+    public int sum(TreeNode root){
         if(root == null) return 0;
-        return root.val+subtreeSum(root.left)+subtreeSum(root.right);
+        return root.val+sum(root.left)+sum(root.right);
     }
-    public void traverse(TreeNode root){
+    public void help(TreeNode root){
         if(root == null) return;
-        int sum = subtreeSum(root);
-        int node = countNode(root);
+        int sum = sum(root);
+        int node = count(root);
         if(sum/node == root.val) count++;
-        traverse(root.left);
-        traverse(root.right);
+        help(root.left);
+        help(root.right);
     }
     public int averageOfSubtree(TreeNode root){
         count = 0;
-        traverse(root);
+        help(root);
         return count;
     }
 }
