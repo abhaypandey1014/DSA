@@ -18,7 +18,7 @@ class Solution {
                     list.add(arr[i]);
                     list.add(arr[j]);
                     list.add(arr[k]);
-                    
+                    // System.out.println(list.get(0)+"--->"+list.get(1)+"--->"+list.get(2));
                     ans.add(list);
                     // System.out.println(ans);
                     j++;
