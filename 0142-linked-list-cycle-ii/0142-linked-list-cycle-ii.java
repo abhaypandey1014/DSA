@@ -9,7 +9,7 @@ public class Solution {
         }
         if(fast==null || fast.next==null) return null;
         slow = head;
-        while(slow != fast){
+        while(slow != fast && fast!=null){
             slow = slow.next;
             fast = fast.next;
         }
