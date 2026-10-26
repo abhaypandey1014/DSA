@@ -13,8 +13,8 @@ class Solution {
         int arr[] = new int[n];
         for(int i = 0;i<n;i++) arr[i] = nums[i];
         Arrays.sort(arr);
-        int dp[][] = new int[n+1][n+1];
-        for(int i = 0;i<=n;i++) Arrays.fill(dp[i],-1);
+        int dp[][] = new int[n][n];
+        for(int i = 0;i<n;i++) Arrays.fill(dp[i],-1);
         return help(arr,nums,0,0,n,dp);
     }
 }
