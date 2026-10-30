@@ -1,6 +1,7 @@
 class Solution {
     public int help(String s,int i,HashMap<String,Character> map,StringBuilder sb,int dp[]){
         if(i>=s.length()) return 1;
+        if(sb.toString().length()>2) return 0;
         int ans = 0;
         if(dp[i]!=-1) return dp[i];
         for(int j = i;j<s.length();j++){
