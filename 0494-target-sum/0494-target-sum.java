@@ -1,22 +1,18 @@
 class Solution {
-    public int help(int[][] dp,int nums[],int target,int idx,int sum,int total){
-        if(idx == nums.length){
-        return sum == target?1:0;
-        }
-        if(dp[idx][sum+total]!=-1) return dp[idx][sum+total];
-        int add = help(dp,nums,target,idx+1,sum+nums[idx],total);
-        int sub = help(dp,nums,target,idx+1,sum-nums[idx],total);
-        return dp[idx][sum+total] = add+sub;
+    public int help(int nums[],int target,int i,int sum,int dp[][],int total){
+        if(i>=nums.length) return sum==target?1:0;
+        if(dp[i][sum+total]!=-1) return dp[i][sum+total];
+        int sum1 = 0;
+        int sum2= 0;
+        sum1 += help(nums,target,i+1,sum+nums[i],dp,total);
+        sum2 += help(nums,target,i+1,sum-nums[i],dp,total);
+        return dp[i][sum+total] = sum1+sum2;
     }
     public int findTargetSumWays(int[] nums, int target) {
-        int n = nums.length;
-        int total = 0;
-        for(int i = 0;i<nums.length;i++) total+=nums[i];
-        int dp[][] = new int[n+1][2*total+1];
-        for(int i = 0;i<n+1;i++){
-            Arrays.fill(dp[i],-1);
-        }
-        return help(dp,nums,target,0,0,total);
-        // return dp[n][target];
+        int sum = 0;
+        for(int i = 0;i<nums.length;i++) sum += nums[i];
+        int dp[][] = new int[nums.length+1][2*sum+1];
+        for(int i = 0;i<=nums.length;i++) Arrays.fill(dp[i],-1);
+        return help(nums,target,0,0,dp,sum);
     }
 }
