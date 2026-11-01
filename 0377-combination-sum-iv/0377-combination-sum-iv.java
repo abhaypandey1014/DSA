@@ -15,7 +15,7 @@ class Solution {
     public int combinationSum4(int[] nums, int target) {
         Arrays.sort(nums);
         int n = nums.length;
-        int dp[][] = new int[n+1][1000+1];
+        int dp[][] = new int[n+1][target+1];
         for(int i = 0;i<n;i++) Arrays.fill(dp[i],-1);
         return help(nums,0,target,dp);
     }
