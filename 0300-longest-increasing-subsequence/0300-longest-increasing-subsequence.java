@@ -1,41 +1,37 @@
 class Solution {
-    // public int help(int arr[],int nums[],int i,int j,int n,int dp[][]){
-    //     if(i>=n || j>=n) return 0;
-    //     if(dp[i][j]!=-1) return dp[i][j];
-    //     if(arr[i]==nums[j]) {
-    //         if(i-1>=0 && arr[i]==arr[i-1]) return help(arr,nums,i+1,j+1,n,dp);
-    //         else return 1+help(arr,nums,i+1,j+1,n,dp);
-    //     }
-    //     return dp[i][j] = Math.max(help(arr,nums,i+1,j,n,dp),help(arr,nums,i,j+1,n,dp));
-    // }
-    public int lengthOfLIS(int[] nums) {
+    public int lcs(int[] nums,int[] nums2){
         int n = nums.length;
-        int arr[] = new int[n];
-        // for(int i = 0;i<n;i++) arr[i] = nums[i];
-        // Arrays.sort(arr);
-        // int dp[][] = new int[n][n];
-        // for(int i = 0;i<n;i++) Arrays.fill(dp[i],-1);
-        // return help(arr,nums,0,0,n,dp);
-        ArrayList<Integer> ans = new ArrayList<>();
-        ans.add(nums[0]);
-        for(int i = 1;i<n;i++){
-            if(nums[i]>ans.get(ans.size()-1)) ans.add(nums[i]);
-            else{
-                int idx = find(ans,ans.size(),nums[i]);
-                ans.set(idx,nums[i]);
+        int m = nums2.length;
+        int[] dp = new int[nums2.length+1];
+        for(int i = 1;i<n+1;i++){
+            for(int j = 1;j<m+1;j++){
+                if(nums[i-1]==nums2[j-1])//equal
+                {
+                    dp[j] = 1 + dp[j-1];
+                }
+                else 
+                {
+                    int ans1 = dp[j];
+                    int ans2 = dp[j-1];
+                    dp[j] = Math.max(ans1,ans2);
+                }
             }
         }
-        return ans.size();
+        return dp[m];
     }
-    public int find(ArrayList<Integer> ans,int len,int tar){
-        int lo = 0;
-        int hi = len-1;
-        while(hi>=lo){
-            int mid = lo+(hi-lo)/2;
-            if(ans.get(mid)>tar) hi = mid-1;
-            else if(ans.get(mid)==tar) return mid;
-            else lo = mid+1;
+    public int lengthOfLIS(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        for(int i = 0;i<nums.length;i++){
+            set.add(nums[i]);
         }
-        return lo;
+        int nums2[] = new int[set.size()];
+        int k = 0;
+        for(int num : set){
+            nums2[k] = num;
+            k++;
+        }
+        Arrays.sort(nums2);
+        //longest common subsequence
+        return lcs(nums,nums2);
     }
 }
