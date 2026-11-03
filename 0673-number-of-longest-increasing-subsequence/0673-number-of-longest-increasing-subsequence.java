@@ -64,6 +64,7 @@ class Solution {
             }
             max = Math.max(dp[i],max);
         }
+        for(int i = 0;i<n;i++) System.out.print(dp[i]+" ");
         int ans = 0;
         for(int i = 0;i<n;i++){
             if(dp[i]==max) ans += cnt[i];
