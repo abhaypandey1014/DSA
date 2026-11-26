@@ -4,15 +4,15 @@ class Solution {
         int sum1 = 0;
         int sum2 = 0;
         if(dp[i]!=-1) return dp[i];
-        sum2 = help(arr,i+1,map,dp);
         int next = i+1;
         if(next<arr.size() && arr.get(next)==arr.get(i)+1) next++;
         sum1 = map.get(arr.get(i))*arr.get(i)+help(arr,next,map,dp);
+        sum2 = help(arr,i+1,map,dp);
         return dp[i] = Math.max(sum1,sum2);
     }
     public int deleteAndEarn(int[] nums) {
         TreeMap<Integer,Integer> map = new TreeMap<>();
-        Arrays.sort(nums);
+        // Arrays.sort(nums);
         for(int i = 0;i<nums.length;i++){
             int a = nums[i];
             map.put(a,map.getOrDefault(a,0)+1);
