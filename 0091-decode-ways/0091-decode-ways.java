@@ -13,7 +13,7 @@ class Solution {
     }
     public int numDecodings(String s) {
         HashMap<String,Character> map = new HashMap<>();
-        for(int i = 1;i<=26;i++) map.put(String.valueOf(65-65+i),(char)(65+i-1));
+        for(int i = 1;i<=26;i++) map.put(String.valueOf(i),(char)(65+i-1));
         if(s.charAt(0)=='0') return 0;
         StringBuilder sb = new StringBuilder();
         int dp[] = new int[s.length()+1];
